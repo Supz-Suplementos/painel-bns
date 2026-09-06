@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supz x BNS — Disponibilidade de catálogo</title>
+<style>
+:root { color-scheme: light;
+  --navy:#0B2355; --pink:#FE4F98; --yellow:#FECE00; --teal:#00CD95; --cyan:#00D5FF;
+  --line:#e3e8f0; --dim:#7c8aa5; --bg:#f7f9fc; }
+* { box-sizing:border-box; }
+body { margin:0; padding:32px 24px 56px; background:#fff; color:var(--navy);
+  font-family:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1080px; margin:0 auto; }
+header { display:flex; align-items:flex-start; justify-content:space-between; gap:24px;
+  padding-bottom:20px; border-bottom:3px solid var(--navy); flex-wrap:wrap; }
+.logo-img { height:38px; width:auto; display:block; }
+.logo { font-size:34px; font-weight:700; letter-spacing:-0.05em; line-height:1; color:var(--navy); }
+.logo i { font-style:normal; color:var(--yellow); }
+.sub { margin-top:8px; font-size:13px; color:var(--dim); letter-spacing:.01em; }
+h1 { font-size:26px; font-weight:700; letter-spacing:-0.034em; margin:0; line-height:1.25; }
+.stamp { text-align:right; font-size:13px; color:var(--dim); }
+.stamp b { display:block; color:var(--navy); font-size:15px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin:26px 0 34px; }
+.card { background:var(--bg); border:1px solid var(--line); border-radius:16px; padding:18px 20px; }
+.card .k { font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--dim); font-weight:600; }
+.card .v { font-size:32px; font-weight:700; letter-spacing:-0.04em; margin-top:6px; line-height:1.1; }
+.card .f { font-size:12px; color:var(--dim); margin-top:4px; }
+.card.hl { background:var(--navy); border-color:var(--navy); }
+.card.hl .k { color:rgba(255,255,255,.65); }
+.card.hl .v { color:var(--yellow); }
+.card.hl .f { color:rgba(255,255,255,.75); }
+h2 { font-size:18px; font-weight:700; letter-spacing:-0.03em; margin:38px 0 6px; }
+h2 .tag { display:inline-block; vertical-align:middle; margin-left:10px; font-size:10px; font-weight:600;
+  text-transform:uppercase; letter-spacing:.08em; background:var(--yellow); color:var(--navy);
+  border-radius:30px; padding:4px 11px; }
+.lead { color:var(--dim); font-size:14px; margin:0 0 16px; }
+.chart { display:flex; align-items:flex-end; gap:3px; height:80px; margin:0 0 4px;
+  padding:0 2px; border-bottom:1px solid var(--line); }
+.bar { flex:1; background:var(--cyan); border-radius:3px 3px 0 0; min-height:2px; opacity:.85; }
+.bar:last-child { background:var(--pink); opacity:1; }
+.rot { display:flex; justify-content:space-between; font-size:11px; color:var(--dim); margin-bottom:26px; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th { text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--dim);
+  font-weight:600; padding:0 10px 9px; border-bottom:2px solid var(--line); white-space:nowrap; }
+th.n, td.n { text-align:right; }
+td { padding:10px; border-bottom:1px solid var(--line); vertical-align:middle; }
+td.d { font-weight:600; white-space:nowrap; }
+td.dim { color:var(--dim); }
+td.taxa { font-weight:700; font-variant-numeric:tabular-nums; }
+td.n { font-variant-numeric:tabular-nums; }
+tr.hoje td { background:#fff9e0; }
+tr.hoje td.d::after { content:"hoje"; margin-left:8px; font-size:9.5px; font-weight:600;
+  text-transform:uppercase; letter-spacing:.06em; background:var(--yellow); color:var(--navy);
+  border-radius:30px; padding:2px 8px; }
+td.rank { font-weight:700; color:var(--dim); width:26px; }
+td.mono { font-variant-numeric:tabular-nums; color:var(--dim); font-size:13px; white-space:nowrap; }
+td.sabor { color:var(--navy); font-size:13px; }
+.pill { display:inline-block; border-radius:30px; padding:3px 12px; font-size:12.5px; font-weight:600;
+  background:#eef2f8; color:var(--navy); min-width:38px; text-align:center; }
+.pill.alto { background:var(--pink); color:#fff; }
+.nota { background:var(--bg); border-left:4px solid var(--yellow); border-radius:0 12px 12px 0;
+  padding:14px 18px; margin:18px 0 0; font-size:14px; }
+.metodo { margin-top:44px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--dim); }
+.metodo h3 { font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--navy); margin:0 0 10px; }
+.metodo ul { margin:0; padding-left:18px; }
+.metodo li { margin-bottom:6px; }
+.metodo b { color:var(--navy); }
+footer { margin-top:26px; font-size:12px; color:var(--dim); }
+@media (max-width:640px) {
+  body { padding:22px 14px 40px; } h1 { font-size:21px; } .stamp { text-align:left; }
+  table { font-size:13px; } td, th { padding-left:5px; padding-right:5px; }
+}
+</style></head><body><div class="wrap">
+
+<header>
+  <div>
+    <img src="data:image/png;base64,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" alt="Supz" class="logo-img">
+    <h1 style="margin-top:16px">Disponibilidade de catálogo — Supz x BNS</h1>
+    <div class="sub">Monitoramento diário automatizado · feed XML da BNS x catálogo Shopify</div>
+  </div>
+  <div class="stamp">Última medição<b>5 de set. de 2026</b><span style="font-size:12px">atualizado diariamente</span></div>
+</header>
+
+<div class="cards">
+  <div class="card hl"><div class="k">Taxa de ruptura hoje</div><div class="v">19,2%</div>
+    <div class="f" style="color:#00CD95">▼ 1,3 p.p. vs. dia anterior</div></div>
+  <div class="card"><div class="k">Disponibilidade</div><div class="v">78,7%</div>
+    <div class="f">480 de 610 SKUs à venda</div></div>
+  <div class="card"><div class="k">SKUs rompidos</div><div class="v">114</div>
+    <div class="f">sem saldo no feed da BNS</div></div>
+  <div class="card"><div class="k">Média do período</div><div class="v">19,6%</div>
+    <div class="f">10 dia(s) medido(s)</div></div>
+</div>
+
+<h2>Ruptura diária<span class="tag">últimos 10 dias</span></h2>
+<p class="lead">Do mais recente ao mais antigo. Base de ruptura exclui os itens descontinuados pela BNS.</p>
+<div class="chart"><div class="bar" style="height:82.8%" title="27/08 — 20,0%"></div><div class="bar" style="height:80.0%" title="28/08 — 19,4%"></div><div class="bar" style="height:77.2%" title="29/08 — 18,7%"></div><div class="bar" style="height:77.2%" title="30/08 — 18,7%"></div><div class="bar" style="height:77.2%" title="31/08 — 18,7%"></div><div class="bar" style="height:80.7%" title="01/09 — 19,5%"></div><div class="bar" style="height:84.2%" title="02/09 — 20,4%"></div><div class="bar" style="height:87.0%" title="03/09 — 21,0%"></div><div class="bar" style="height:84.9%" title="04/09 — 20,5%"></div><div class="bar" style="height:79.3%" title="05/09 — 19,2%"></div></div>
+<div class="rot"><span>27/08</span><span>05/09</span></div>
+<table>
+<thead><tr><th>Data</th><th class="n">Monitorados</th><th class="n">Descont.</th><th class="n">Base</th>
+<th class="n">Rompidos</th><th class="n">Taxa de ruptura</th><th class="n">Disponibilidade</th></tr></thead>
+<tbody><tr class="hoje"><td class="d">05/09</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">114</td><td class="n taxa">19,2%</td><td class="n">78,7%</td></tr><tr><td class="d">04/09</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">122</td><td class="n taxa">20,5%</td><td class="n">77,4%</td></tr><tr><td class="d">03/09</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">125</td><td class="n taxa">21,0%</td><td class="n">76,9%</td></tr><tr><td class="d">02/09</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">121</td><td class="n taxa">20,4%</td><td class="n">77,5%</td></tr><tr><td class="d">01/09</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">116</td><td class="n taxa">19,5%</td><td class="n">78,4%</td></tr><tr><td class="d">31/08</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">111</td><td class="n taxa">18,7%</td><td class="n">79,2%</td></tr><tr><td class="d">30/08</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">111</td><td class="n taxa">18,7%</td><td class="n">79,2%</td></tr><tr><td class="d">29/08</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">111</td><td class="n taxa">18,7%</td><td class="n">79,2%</td></tr><tr><td class="d">28/08</td><td class="n">610</td><td class="n dim">16</td><td class="n dim">594</td><td class="n">115</td><td class="n taxa">19,4%</td><td class="n">78,5%</td></tr><tr><td class="d">27/08</td><td class="n">612</td><td class="n dim">18</td><td class="n dim">594</td><td class="n">119</td><td class="n taxa">20,0%</td><td class="n">77,6%</td></tr></tbody></table>
+
+<h2>Top 10 SKUs rompidos<span class="tag">por receita 12 meses</span></h2>
+<p class="lead">Itens sem saldo na BNS na medição de hoje, ordenados pela receita que geraram nos últimos 365 dias.</p>
+<table>
+<thead><tr><th></th><th>SKU</th><th>Produto</th><th>Sabor / variante</th>
+<th class="n">Receita 12m</th><th class="n">Dias parado</th></tr></thead>
+<tbody><tr><td class="rank">1</td><td class="mono">2469589</td><td>Whey Protein Isolado 900g — Dux Human Health</td><td class="sabor">Neutro</td><td class="n">R$ 2.341</td><td class="n"><span class="pill alto">10</span></td></tr><tr><td class="rank">2</td><td class="mono">2469329</td><td>Super Coffee 3.0 380g — Caffeine Army</td><td class="sabor">Chocolate (língua de gato)</td><td class="n">R$ 2.005</td><td class="n"><span class="pill">2</span></td></tr><tr><td class="rank">3</td><td class="mono">2448882</td><td>Whey Protein Isolado 900g — Dux Human Health</td><td class="sabor">Chocolate</td><td class="n">R$ 1.421</td><td class="n"><span class="pill alto">10</span></td></tr><tr><td class="rank">4</td><td class="mono">2453958</td><td>Creatina Creapure 100g — Dux Human Health</td><td class="sabor">—</td><td class="n">R$ 1.239</td><td class="n"><span class="pill alto">10</span></td></tr><tr><td class="rank">5</td><td class="mono">2448888</td><td>Protein 1,8kg — Dux Human Health</td><td class="sabor">Baunilha</td><td class="n">R$ 1.226</td><td class="n"><span class="pill">4</span></td></tr><tr><td class="rank">6</td><td class="mono">2456782</td><td>Prebiotic 210g — Nutrify</td><td class="sabor">—</td><td class="n">R$ 1.224</td><td class="n"><span class="pill">1</span></td></tr><tr><td class="rank">7</td><td class="mono">1360</td><td>Ômega 3 EPA DHA 1g 60caps — VitaFor</td><td class="sabor">—</td><td class="n">R$ 791</td><td class="n"><span class="pill alto">10</span></td></tr><tr><td class="rank">8</td><td class="mono">1358</td><td>Ômega 3 Mega DHA 60caps — VitaFor</td><td class="sabor">—</td><td class="n">R$ 663</td><td class="n"><span class="pill alto">10</span></td></tr><tr><td class="rank">9</td><td class="mono">2464920</td><td>100% Pure 900g Refil — Probiótica</td><td class="sabor">Cookies &amp; Cream</td><td class="n">R$ 606</td><td class="n"><span class="pill alto">10</span></td></tr><tr><td class="rank">10</td><td class="mono">2452290</td><td>True Whey 837g — True Source</td><td class="sabor">Mousse de Maracujá</td><td class="n">R$ 526</td><td class="n"><span class="pill alto">10</span></td></tr></tbody></table>
+<p class="nota"><b>R$ 12.042</b> dos <b>R$ 27.626</b> gerados em 12 meses pelos 114 SKUs rompidos estão concentrados nestes 10 — <b>44% do impacto</b> em 9% dos itens.</p>
+
+<div class="metodo">
+  <h3>Como o indicador é calculado</h3>
+  <ul>
+    <li><b>Universo:</b> apenas SKUs com pelo menos 1 unidade vendida nos últimos 12 meses. Catálogo inteiro não serve — mistura cauda morta com ruptura real.</li>
+    <li><b>Janela móvel de 12 meses</b>, congelada por um mês. Recalcular a demanda todo dia faria o SKU cronicamente rompido sair do denominador, e o indicador melhoraria justamente quando a ruptura piora.</li>
+    <li><b>Indisponível:</b> saldo ≤ 0 na loja após a sincronização diária com o feed da BNS. Uma foto por dia, sempre no mesmo horário.</li>
+    <li><b>Ruptura BNS:</b> SKU presente no feed com quantidade zero. <b>Descontinuado:</b> SKU que saiu do feed.</li>
+    <li><b>Taxa de ruptura</b> = rompidos ÷ (monitorados − descontinuados). <b>Disponibilidade</b> = SKUs com saldo ÷ monitorados.</li>
+    <li><b>Dias parado</b> conta desde o início da medição — um item com o máximo de dias pode estar rompido há mais tempo do que a série alcança.</li>
+    <li>Fonte única: feed XML da BNS cruzado com o catálogo Shopify da Supz. Sem intervenção manual.</li>
+  </ul>
+</div>
+<footer>Gerado automaticamente pela rotina diária de conferência de catálogo da Supz. Série iniciada em 27/08/2026.</footer>
+
+</div></body></html>
